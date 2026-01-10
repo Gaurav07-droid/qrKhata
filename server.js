@@ -11,6 +11,12 @@ app.use(express.json());
 app.use("/public", express.static(path.join(__dirname,"public")));
 app.use("/Logos", express.static(path.join(__dirname,"Logos")));
 
+app.use((req, res, next) => {
+  if (req.headers.host === "qrkhata.com") {
+    return res.redirect(301, "https://www.qrkhata.com" + req.originalUrl);
+  }
+  next();
+});
 
 app.get("/", (req,res)=>{
   res.sendFile(path.join(__dirname,"qrkhata.html"));
