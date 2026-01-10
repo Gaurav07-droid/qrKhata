@@ -4,6 +4,7 @@ const cors = require("cors");
 const mongStr="mongodb+srv://qrkhata:qrkhata123@cluster0.gpex6ct.mongodb.net/?appName=Cluster0"
 const path = require("path"); 
 const app = express();
+// const nodemailer = require("nodemailer");
 app.use(cors());
 app.use(express.json());
 
@@ -17,6 +18,9 @@ app.use((req, res, next) => {
   }
   next();
 });
+
+
+
 
 app.get("/", (req,res)=>{
   res.sendFile(path.join(__dirname,"qrkhata.html"));
@@ -67,15 +71,7 @@ app.post("/api/join", async (req, res) => {
 });
 
 
-const nodemailer = require("nodemailer");
 
-const transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    user: "yourgmail@gmail.com",
-    pass: "your_app_password"
-  }
-});
 
 app.listen(3000, () => {
   console.log("QR Khata running on http://localhost:3000");
