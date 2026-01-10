@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>QR Khata – Early Access</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --primary:#2663eb;
+  --text:#020617;
+  --muted:#64748b;
+}
+
+*{box-sizing:border-box;font-family:Inter,sans-serif;}
+
+body{
+  margin:0;
+  height:100vh;
+  overflow:hidden;
+  background:linear-gradient(180deg,#ffffff,#e7eef9);
+  color:var(--text);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.page{
+  width:100%;
+  max-width:900px;
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:flex-start;
+  padding-top:15px;
+  position:relative;
+}
+
+/* LOGO */
+.logo{
+  width:54px;
+  height:80px;
+  border-radius:14px;
+  background:rgb(255, 255, 255);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin-bottom:20px;
+   /* opacity: .7; */
+  transform: scale(.9);
+}
+
+.logo img{
+  width:120px;
+  height:120px;
+  object-fit:contain;
+}
+
+/* TEXT */
+h1{
+  font-size:34px;
+  margin:0 0 8px;
+  text-align:center;
+}
+
+.subtitle{
+  color:var(--muted);
+  font-size:14px;
+  text-align:center;
+  max-width:460px;
+  margin-top: 10px;
+}
+
+/* INPUT */
+.waitlist{
+  display:flex;
+  gap:10px;
+  margin:28px 0 12px;
+}
+
+.waitlist input{
+  padding:12px 16px;
+  border-radius:12px;
+  border:1px solid #cbd5e1;
+  width:260px;
+  font-size:15px;
+}
+
+.waitlist button{
+  background:var(--primary);
+  color:white;
+  border:none;
+  padding:12px 20px;
+  border-radius:12px;
+  font-weight:600;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.waitlist button:hover{
+  transform:scale(1.05);
+  box-shadow:0 10px 30px rgba(38,99,235,.4);
+}
+
+/* SOCIAL */
+.social{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-size:13px;
+  color:var(--muted);
+}
+
+/* COUNTDOWN */
+.countdown{
+
+  
+  display:flex;
+  gap:14px;
+  margin-top:38px;
+}
+
+.timebox{
+  background:white;
+  border-radius:12px;
+  padding:10px 14px;
+  min-width:70px;
+  text-align:center;
+  box-shadow:0 6px 16px rgba(0,0,0,0.05);
+}
+
+.timebox h3{margin:0;font-size:18px;}
+.timebox small{color:var(--muted);}
+
+/* LINKEDIN */
+.linkedin-journey{
+  margin-top:26px;
+  text-align:center;
+  font-size:13px;
+  color:var(--muted);
+}
+
+.linkedin-journey a{
+  color:var(--primary);
+  text-decoration:none;
+  font-weight:500;
+}
+
+/* FOOTER */
+.footer{
+  margin-top:10px;
+  text-align:center;
+  font-size:12px;
+  color:var(--muted);
+}
+
+/* PHONE */
+.phone-clip{
+  position:absolute;
+  bottom:-40px;
+  height:360px;
+  width:100%;
+  display:flex;
+  justify-content:center;
+  overflow:hidden;
+}
+
+.iphone{
+  width:300px;
+  height:620px;
+  background:linear-gradient(180deg,#111,#000);
+  border-radius:42px;
+  padding:14px;
+  box-shadow:
+    0 40px 80px rgba(0,0,0,0.35),
+    inset 0 0 0 2px #222;
+  position:relative;
+}
+
+.notch{
+  position:absolute;
+  top:18px;
+  left:50%;
+  transform:translateX(-50%);
+  width:120px;
+  height:26px;
+  background:black;
+  border-radius:20px;
+  z-index:2;
+}
+
+.screen{
+  background:#f8fafc;
+  border-radius:32px;
+  height:100%;
+  padding:16px;
+  box-shadow:inset 0 0 20px rgba(0,0,0,0.05);
+}
+
+.status-bar{
+  display:flex;
+  justify-content:space-between;
+  font-size:12px;
+  color:#555;
+  margin-bottom:10px;
+}
+
+.app-header{
+  font-weight:600;
+  display:flex;
+  justify-content:space-between;
+}
+
+.card{
+  background:var(--primary);
+  color:white;
+  border-radius:18px;
+  padding:16px;
+  margin:14px 0;
+  box-shadow:0 10px 20px rgba(38,99,235,.4);
+}
+
+.list .item{
+  background:white;
+  padding:12px 14px;
+  border-radius:14px;
+  margin-bottom:12px;
+  display:flex;
+  justify-content:space-between;
+  box-shadow:0 6px 16px rgba(0,0,0,0.05);
+}
+
+.mockup-area{
+  position:relative;
+  width:100%;
+  height:420px;
+}
+
+
+@keyframes draw{
+  from{stroke-dashoffset:40;}
+  to{stroke-dashoffset:0;}
+}
+
+
+.floating-card{
+  position:absolute;
+  width:200px;
+  background:white;
+  border-radius:14px;
+  padding:14px;
+  box-shadow:0 20px 40px rgba(0,0,0,0.15);
+  font-size:13px;
+  animation:floatCard 4s ease-in-out infinite;
+}
+
+.floating-card p{
+  margin:4px 0;
+  color:#334155;
+}
+
+.floating-card small{
+  color:#64748b;
+}
+
+/* LEFT CARD */
+.left-card{
+  left:10%;
+  bottom:100px;
+}
+
+.right-card{
+  right:8%;
+  bottom:40px;
+}
+
+.toast{
+  position:fixed;
+  top:30px;
+  right:30px;
+  background:white;
+  padding:16px 22px;
+  border-radius:14px;
+  box-shadow:0 20px 40px rgba(0,0,0,0.15);
+  font-size:14px;
+  font-weight:500;
+  opacity:0;
+  transform:translateY(-20px);
+  transition:.4s ease;
+  z-index:999;
+}
+
+.toast.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.toast.success{
+  border-left:6px solid #22c55e;
+}
+
+.toast.info{
+  border-left:6px solid #3b82f6;
+}
+
+button.joined{
+  background:#22c55e;
+  cursor:not-allowed;
+  box-shadow:0 10px 25px rgba(34,197,94,.4);
+}
+
+
+/* FLOAT ANIMATION */
+@keyframes floatCard{
+  0%{transform:translateY(0px);}
+  50%{transform:translateY(-12px);}
+  100%{transform:translateY(0px);}
+}
+
+
+
+.due{color:#dc2626;font-weight:600;font-size:12px;}
+.paid{color:#16a34a;font-weight:600;font-size:12px;}
+
+</style>
+</head>
+
+<div class="toast" id="toast"></div>
+
+<script src="/public/main.js"></script>
+<body>
+  
+<div class="page">
+
+ <div class="logo">
+  <img src="/public/image copy.png" alt="QR Khata Logo">
+</div>
+
+
+  <h1>Get early access</h1>
+
+  <div class="subtitle">
+  India’s first <b>credit discipline system</b>.
+    Join the waitlist and shape the future of udhaar for new Bharat.
+  </div>
+
+  <div class="waitlist">
+    <input  type="tel"
+  id="mobile"
+  placeholder="Enter mobile number"
+  maxlength="10"
+  inputmode="numeric"
+  pattern="[0-9]*">
+    <button id="joinBtn" onclick="joinWaitlist()">Join waitlist</button>
+  </div>
+
+  <div class="social">
+    Join <b>100+</b> others on the waitlist
+  </div>
+
+  <div class="countdown">
+  <div class="timebox"><h3 id="days">00</h3><small>Days</small></div>
+  <div class="timebox"><h3 id="hours">00</h3><small>Hours</small></div>
+  <div class="timebox"><h3 id="minutes">00</h3><small>Minutes</small></div>
+  <div class="timebox"><h3 id="seconds">00</h3><small>Seconds</small></div>
+</div>
+
+
+  <div class="linkedin-journey">
+  Follow our journey on 
+    <a href="https://www.linkedin.com/company/qrkhata" target="_blank">LinkedIn  --></a>
+  </div>
+ <!-- <div class="footer">
+    © QR Khata · Building credit discipline for India
+  </div>
+</div> -->
+
+<!-- PHONE MOCK -->
+<div class="mockup-area">
+
+  <!-- PHONE -->
+  <div class="phone-clip">
+    <div class="iphone">
+
+      <div class="notch"></div>
+
+      <div class="screen">
+
+        <div class="status-bar">
+          <span>9:41</span>
+          <span>📶 🔋</span>
+        </div>
+
+        <div class="app-header">
+          Suresh Store
+        </div>
+
+        <div class="card">
+          <small>Total Credit</small>
+          <h2>₹48,500</h2>
+        </div>
+
+        <div class="list">
+          <div class="item">Ramesh <span class="due">Due</span></div>
+          <div class="item">Khushi <span class="paid">Paid</span></div>
+          <div class="item">Mahesh <span class="due">Due</span></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- FLOATING CARDS -->
+  <div class="floating-card left-card">
+    <strong>Ramesh</strong>
+    <p>Amount: ₹1,250</p>
+    <p>Items: Rice, Oil, Sugar</p>
+    <small>9 Jan 2026 · 6:42 PM</small>
+  </div>
+
+  <div class="floating-card right-card">
+    <strong>Khushi</strong>
+    <p>Amount: ₹980</p>
+    <p>Items: Milk, Bread</p>
+    <small>8 Jan 2026 · 2:15 PM</small>
+  </div>
+
+</div>
+
+
+</body>
+</html>
