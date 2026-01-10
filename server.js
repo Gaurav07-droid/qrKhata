@@ -12,6 +12,10 @@ app.use("/public", express.static(path.join(__dirname,"public")));
 app.use("/Logos", express.static(path.join(__dirname,"Logos")));
 
 
+app.get("/", (req,res)=>{
+  res.sendFile(path.join(__dirname,"qrkhata.html"));
+});
+
 // MongoDB connection
 mongoose.connect(mongStr)
   .then(() => console.log("MongoDB Connected Successfully"))
