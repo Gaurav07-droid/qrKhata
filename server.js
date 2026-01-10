@@ -66,6 +66,17 @@ app.post("/api/join", async (req, res) => {
   }
 });
 
+
+const nodemailer = require("nodemailer");
+
+const transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: "yourgmail@gmail.com",
+    pass: "your_app_password"
+  }
+});
+
 app.listen(3000, () => {
   console.log("QR Khata running on http://localhost:3000");
 });
