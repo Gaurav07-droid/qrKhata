@@ -194,6 +194,7 @@ h1{
   z-index:2;
 }
 
+
 .screen{
   background:#f8fafc;
   border-radius:32px;
@@ -322,6 +323,23 @@ button.joined{
   100%{transform:translateY(0px);}
 }
 
+/* Hindi English Toggle*/
+.lang-toggle{
+  position:absolute;
+  top:20px;
+  right:20px;
+  display:flex;
+  gap:8px;
+}
+
+.lang-toggle button{
+  background:white;
+  border:1px solid #cbd5e1;
+  padding:6px 10px;
+  border-radius:8px;
+  cursor:pointer;
+  font-size:13px;
+}
 
 
 .due{color:#dc2626;font-weight:600;font-size:12px;}
@@ -336,15 +354,19 @@ button.joined{
 <body>
   
 <div class="page">
+<div class="lang-toggle">
+  <button onclick="setLang('en')">EN</button>
+  <button onclick="setLang('hi')">हिंदी</button>
+</div>
 
  <div class="logo">
   <img src="/public/image copy.png" alt="QR Khata Logo">
 </div>
 
 
-  <h1>Get early access</h1>
+  <h1 id="title">Get early access</h1>
 
-  <div class="subtitle">
+  <div class="subtitle" id="subtitle">
   India’s first <b>credit discipline system</b>.
     Join the waitlist and shape the future of udhaar for new Bharat.
   </div>
@@ -359,7 +381,7 @@ button.joined{
     <button id="joinBtn" onclick="joinWaitlist()">Join waitlist</button>
   </div>
 
-  <div class="social">
+  <div class="social" id="socialText">
     Join <b>100+</b> others on the waitlist
   </div>
 
@@ -371,9 +393,9 @@ button.joined{
 </div>
 
 
-  <div class="linkedin-journey">
-  Follow our journey on 
-    <a href="https://www.linkedin.com/company/qrkhata" target="_blank">LinkedIn  --></a>
+  <div class="linkedin-journey" id="linkedinText">
+   <span id="linkedinPrefix">Follow our journey on </span>
+  <a href="https://www.linkedin.com/company/qrkhata" target="_blank">LinkedIn →</a>
   </div>
  <!-- <div class="footer">
     © QR Khata · Building credit discipline for India
