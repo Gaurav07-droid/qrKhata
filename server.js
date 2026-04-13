@@ -7,7 +7,8 @@ const app = express();
 // const nodemailer = require("nodemailer");
 app.use(cors());
 app.use(express.json());
-
+app.use(express.static(__dirname));
+app.use(express.static('public'));
 
 app.use("/public", express.static(path.join(__dirname,"public")));
 app.use("/Logos", express.static(path.join(__dirname,"Logos")));

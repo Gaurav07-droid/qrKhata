@@ -167,3 +167,17 @@ const savedLang = localStorage.getItem("qrkhata_lang");
 if(savedLang){
   setLang(savedLang);
 }
+
+
+function openPrivacy() {
+  document.getElementById("privacyModal").style.display = "flex";
+}
+
+function closePrivacy() {
+  document.getElementById("privacyModal").style.display = "none";
+}
+
+document.getElementById("privacyLink").addEventListener("click", function(e){
+  e.preventDefault();
+  openPrivacy();
+});
